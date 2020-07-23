@@ -47,7 +47,8 @@ public class RagdollManager : MonoBehaviour
         {
             collider = res[i];
             collider.attachedRigidbody.isKinematic = true;
-            cb = collider.gameObject.AddComponent<ColliderBridge>();
+            cb = collider.gameObject.GetComponent<ColliderBridge>();
+            if (null == cb) cb = collider.gameObject.AddComponent<ColliderBridge>();
             cb.RegisterManager(this);
             colliders.Add(collider);
         }
